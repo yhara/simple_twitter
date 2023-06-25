@@ -2,6 +2,15 @@ require 'http'
 require 'simple_oauth'
 
 module SimpleTwitter
+  class Error < StandardError
+  end
+
+  class ClientError < Error
+  end
+
+  class ServerError < Error
+  end
+
   class Client
     def initialize(bearer_token: nil,
                    api_key: nil,
@@ -23,8 +32,11 @@ module SimpleTwitter
     %i[get post put delete].each do |m|
       class_eval <<~EOD
         # @return [Object] parsed json data
+        # @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
+        # @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
         def #{m}(url, params={})
-          JSON.parse(#{m}_raw(url, params).to_s, symbolize_names: true)
+          res = #{m}_raw(url, params)
+          parse_response(res)
         end
 
         # @return [HTTP::Response]
@@ -54,6 +66,21 @@ module SimpleTwitter
       else
         SimpleOAuth::Header.new(method, url, params, @oauth_params).to_s
       end
+    end
+
+    # @param res [HTTP::Response]
+    # @return [Object] parsed json data
+    # @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
+    # @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
+    def parse_response(res)
+      case res.code.to_i / 100
+      when 4
+        raise ClientError, res.to_s
+      when 5
+        raise ServerError, res.to_s
+      end
+
+      JSON.parse(res.to_s, symbolize_names: true)
     end
   end
 end
