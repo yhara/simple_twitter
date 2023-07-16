@@ -1,4 +1,5 @@
 module SimpleTwitter
+  # Error base class
   class Error < StandardError
     # @!attribute [r] raw_response
     # @return [HTTP::Response] raw error response
