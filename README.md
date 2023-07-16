@@ -100,9 +100,35 @@ tweets = @client.get("https://api.twitter.com/2/users/#{id}/tweets", params: {
 })
 ```
 
+### Detailed error details
+If an error is returned from the API, you may need more information.
+
+In such cases, you can retrieve it as follows.
+
+```ruby
+begin
+  client = SimpleTwitter::Client.new(bearer_token: "invalid_bearer_token")
+  client.get("https://api.twitter.com/2/users/me")
+rescue SimpleTwitter::Error => error
+  error.raw_response.class
+  #=> HTTP::Response
+
+  error.raw_response.code
+  #=> 403
+
+  error.body[:title]
+  # => "Unsupported Authentication"
+end
+```
+
+See more. [`SimpleTwitter::Error`](https://yhara.github.io/simple_twitter/SimpleTwitter/Error.html)
+
+## API Reference
+See https://yhara.github.io/simple_twitter/
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/naclyhara/simple_twitter.
+Bug reports and pull requests are welcome on GitHub at https://github.com/yhara/simple_twitter.
 
 ## License
 
