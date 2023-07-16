@@ -1,0 +1,10 @@
+# TypeProf 0.21.3
+
+# Classes
+module SimpleTwitter
+  class Error < StandardError
+    attr_reader raw_response: untyped
+    attr_reader body: untyped
+    def initialize: (untyped raw_response) -> void
+  end
+end
