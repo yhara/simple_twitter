@@ -63,4 +63,23 @@ RSpec.describe SimpleTwitter::Client do
     it { expect { subject }.to raise_error(SimpleTwitter::ClientError) { |error| error.raw_response.code == 403 } }
     it { expect { subject }.to raise_error(SimpleTwitter::ClientError) { |error| error.body[:title] == "Unsupported Authentication" } }
   end
+
+  describe "unknown error is returned" do
+    subject { client.get("https://api.twitter.com/2/users/me") }
+
+    let(:client) { SimpleTwitter::Client.new(bearer_token: "invalid_bearer_token") }
+
+    before do
+      stub_request(:get, "https://api.twitter.com/2/users/me").
+        with(
+          headers: {
+            'Authorization'=>'Bearer invalid_bearer_token',
+          }).
+        to_return(status: 500, body: "this is not json")
+    end
+
+    it { expect { subject }.to raise_error(SimpleTwitter::ServerError, "Unknown error (status 500)") }
+    it { expect { subject }.to raise_error(SimpleTwitter::ServerError) { |error| error.raw_response.code == 500 } }
+    it { expect { subject }.to raise_error(SimpleTwitter::ServerError) { |error| error.body.nil? } }
+  end
 end

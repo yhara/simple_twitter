@@ -12,12 +12,18 @@ module SimpleTwitter
     # @param raw_response [HTTP::Response] raw error response from Twitter API
     def initialize(raw_response)
       @raw_response = raw_response
-      @body = JSON.parse(raw_response.to_s, symbolize_names: true)
 
-      title = @body[:title] || "Unknown error"
-      title << " (status #{raw_response.code})"
+      begin
+        @body = JSON.parse(raw_response.to_s, symbolize_names: true)
 
-      super(title)
+        title = @body[:title] || "Unknown error"
+        title << " (status #{raw_response.code})"
+
+        super(title)
+      rescue JSON::ParserError => e
+        # Twitter doesn't returns json
+        super("Unknown error (status #{raw_response.code})")
+      end
     end
   end
 end
