@@ -1,4 +1,5 @@
 require "webmock/rspec"
+require "rspec/its"
 require "simple_twitter"
 
 Dir["#{__dir__}/support/**/*.rb"].each {|f| require f }
