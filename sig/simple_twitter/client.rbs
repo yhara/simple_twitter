@@ -1,0 +1,16 @@
+# TypeProf 0.21.3
+
+# Classes
+module SimpleTwitter
+  class Client
+    @bearer_token: untyped
+    @oauth_params: {consumer_key: nil, consumer_secret: nil, token: nil, token_secret: nil}
+
+    def initialize: (?bearer_token: nil, ?api_key: nil, ?api_secret_key: nil, ?access_token: nil, ?access_token_secret: nil) -> void
+
+    private
+    def http: (untyped method, untyped url, untyped params) -> untyped
+    def auth_header: (untyped method, untyped url, untyped params) -> String
+    def parse_response: (untyped res) -> untyped
+  end
+end
