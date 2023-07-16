@@ -4,16 +4,16 @@ https://github.com/yhara/simple_twitter/compare/v1.0.0...main
 ### :bomb: [BREAKING CHANGE] positional args to keywords args
 Since v2.0, the positional arguments of the following methods are now keyword arguments.
 
-| v1.0                                                 | v2.0+                                                          |
-| ---------------------------------------------------- | -------------------------------------------------------------- |
-| `SimpleTwitter::Client#get(url, params = {})`        | `SimpleTwitter::Client#get(url, params: {}, json: nil)`        |
-| `SimpleTwitter::Client#get_raw(url, params = {})`    | `SimpleTwitter::Client#get_raw(url, params: {}, json: nil)`    |
-| `SimpleTwitter::Client#post(url, params = {})`       | `SimpleTwitter::Client#post(url, params: {}, json: nil)`       |
-| `SimpleTwitter::Client#post_raw(url, params = {})`   | `SimpleTwitter::Client#post_raw(url, params: {}, json: nil)`   |
-| `SimpleTwitter::Client#put(url, params = {})`        | `SimpleTwitter::Client#put(url, params: {}, json: nil)`        |
-| `SimpleTwitter::Client#put_raw(url, params = {})`    | `SimpleTwitter::Client#put_raw(url, params: {}, json: nil)`    |
-| `SimpleTwitter::Client#delete(url, params = {})`     | `SimpleTwitter::Client#delete(url, params: {}, json: nil)`     |
-| `SimpleTwitter::Client#delete_raw(url, params = {})` | `SimpleTwitter::Client#delete_raw(url, params: {}, json: nil)` |
+| v1.0                                                 | v2.0+                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------- |
+| `SimpleTwitter::Client#get(url, params = {})`        | `SimpleTwitter::Client#get(url, params: {}, json: {})`        |
+| `SimpleTwitter::Client#get_raw(url, params = {})`    | `SimpleTwitter::Client#get_raw(url, params: {}, json: {})`    |
+| `SimpleTwitter::Client#post(url, params = {})`       | `SimpleTwitter::Client#post(url, params: {}, json: {})`       |
+| `SimpleTwitter::Client#post_raw(url, params = {})`   | `SimpleTwitter::Client#post_raw(url, params: {}, json: {})`   |
+| `SimpleTwitter::Client#put(url, params = {})`        | `SimpleTwitter::Client#put(url, params: {}, json: {})`        |
+| `SimpleTwitter::Client#put_raw(url, params = {})`    | `SimpleTwitter::Client#put_raw(url, params: {}, json: {})`    |
+| `SimpleTwitter::Client#delete(url, params = {})`     | `SimpleTwitter::Client#delete(url, params: {}, json: {})`     |
+| `SimpleTwitter::Client#delete_raw(url, params = {})` | `SimpleTwitter::Client#delete_raw(url, params: {}, json: {})` |
 
 Please modify as follows when you upgrade from v1.0 :pray:
 
@@ -31,7 +31,10 @@ client.get("https://api.twitter.com/2/tweets", params: { ids: "13021278840399093
 
 If only 1 argument was used (e.g. `client.get("https://api.twitter.com/2/users/me")`), no modification is required.
 
-See more. https://github.com/yhara/simple_twitter/pull/3
+See more. 
+
+* https://github.com/yhara/simple_twitter/pull/3
+* https://github.com/yhara/simple_twitter/pull/19
 
 ### :bomb: [BREAKING CHANGE] raise Error when Twitter API returned error
 Until v1.0, even if the Twitter API returns an error, Ruby does not throw an error, so it is considered a normal exit.
@@ -101,6 +104,9 @@ See more.
 - Add tests and CI
   - https://github.com/yhara/simple_twitter/pull/7
   - https://github.com/yhara/simple_twitter/pull/12
+- Tweak doc
+  - https://github.com/yhara/simple_twitter/pull/17
+  - https://github.com/yhara/simple_twitter/pull/18
 
 ## v1.0.0 (2021-03-28)
 
