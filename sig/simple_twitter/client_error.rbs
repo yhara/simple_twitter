@@ -2,6 +2,6 @@
 
 # Classes
 module SimpleTwitter
-  class ClientError
+  class ClientError < Error
   end
 end

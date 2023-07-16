@@ -3,8 +3,8 @@
 # Classes
 module SimpleTwitter
   class Error < StandardError
-    attr_reader raw_response: untyped
-    attr_reader body: untyped
-    def initialize: (untyped raw_response) -> void
+    attr_reader raw_response: HTTP::Response
+    attr_reader body: Hash[Symbol, untyped]
+    def initialize: (HTTP::Response raw_response) -> void
   end
 end
