@@ -80,7 +80,10 @@ rescue SimpleTwitter::Error => error
 end
 ```
 
-See more. https://github.com/yhara/simple_twitter/pull/2
+See more. 
+
+* https://github.com/yhara/simple_twitter/pull/2
+* https://github.com/yhara/simple_twitter/pull/15
 
 ### Others
 - Add @sue445 as an author
