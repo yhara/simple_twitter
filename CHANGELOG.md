@@ -85,20 +85,22 @@ See more.
 * https://github.com/yhara/simple_twitter/pull/2
 * https://github.com/yhara/simple_twitter/pull/15
 
-### Others
-- Add @sue445 as an author
-  - https://github.com/yhara/simple_twitter/pull/6
-- Add tests and CI
-  - https://github.com/yhara/simple_twitter/pull/7
-  - https://github.com/yhara/simple_twitter/pull/12
-- Relax runtime dependency
-  - https://github.com/yhara/simple_twitter/pull/8
+### Features
 - Enabled rubygems_mfa_required
   - https://github.com/yhara/simple_twitter/pull/9
 - Add changelog_uri to gemspec
   - https://github.com/yhara/simple_twitter/pull/10
 - Write YARD comment and publish to Pages
   - https://github.com/yhara/simple_twitter/pull/13
+- Add documentation_uri to gemspec metadata
+  - https://github.com/yhara/simple_twitter/pull/16
+
+### Others
+- Add @sue445 as an author
+  - https://github.com/yhara/simple_twitter/pull/6
+- Add tests and CI
+  - https://github.com/yhara/simple_twitter/pull/7
+  - https://github.com/yhara/simple_twitter/pull/12
 
 ## v1.0.0 (2021-03-28)
 
