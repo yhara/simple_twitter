@@ -107,7 +107,7 @@ module SimpleTwitter
     # @param method [Symbol]
     # @param url [String]
     # @param params [Hash<Symbol, String>]
-    # @return [HTTP::Request]
+    # @return [HTTP::Client]
     def http(method, url, params)
       HTTP.auth(auth_header(method, url, params))
     end
