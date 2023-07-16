@@ -56,15 +56,11 @@ RSpec.describe SimpleTwitter::Client do
           headers: {
             'Authorization'=>'Bearer invalid_bearer_token',
           }).
-        to_return(status: 200, body: fixture("error_403.json"))
+        to_return(status: 403, body: fixture("error_403.json"))
     end
 
-    it "get response" do
-      tweets = subject[:data]
-
-      expect(tweets.count).to eq 3
-      expect(tweets[0][:id]).to eq "1460323737035677698"
-      expect(tweets[0][:text]).to eq "Introducing a new era for the Twitter Developer Platform! nn📣The Twitter API v2 is now the primary API and full of new featuresn⏱Immediate access for most use cases, or apply to get more access for freen📖Removed certain restrictions in the Policynhttps://t.co/Hrm15bkBWJ https://t.co/YFfCDErHsg"
-    end
+    it { expect { subject }.to raise_error(SimpleTwitter::ClientError, "Unsupported Authentication (status 403)") }
+    it { expect { subject }.to raise_error(SimpleTwitter::ClientError) { |error| error.raw_response.code == 403 } }
+    it { expect { subject }.to raise_error(SimpleTwitter::ClientError) { |error| error.body[:title] == "Unsupported Authentication" } }
   end
 end
