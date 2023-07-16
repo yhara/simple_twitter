@@ -60,6 +60,20 @@ pp client.post("https://api.twitter.com/1.1/statuses/update.json",
 
 You can get the access_token and access_token_secret for your own at the Twitter Developer Portal. For other users, you need to get them via OAuth (out of scope of this gem.)
 
+### Post with JSON body
+Since Twitter API v2, POST must be sent as JSON body
+
+e.g.https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+
+Send using the `json` argument.
+
+e.g.
+
+```ruby
+client = SimpleTwitter::Client.new(bearer_token: ENV["ACCESS_TOKEN"])
+client.post("https://api.twitter.com/2/tweets", json: { text: "Hello twitter!" })
+```
+
 ### Advanced
 
 If you want the raw json string or use streaming API, use `get_raw`, `post_raw`, etc. which returns `HTTP::Response` of the [http gem](https://github.com/httprb/http).
