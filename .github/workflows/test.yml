@@ -45,3 +45,4 @@ jobs:
           bundle update --jobs $(nproc) --retry 3
 
       - run: bundle exec rspec
+      - run: bundle exec yard --fail-on-warning
