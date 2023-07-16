@@ -28,6 +28,17 @@ RSpec.describe SimpleTwitter::Client do
     let(:client) { SimpleTwitter::Client.new(bearer_token: "test_bearer_token") }
 
     before do
+      payload = <<~JSON.strip
+        {"text":"Are you excited for the weekend?"}
+      JSON
+
+      stub_request(:post, "https://api.twitter.com/2/tweets").
+        with(
+          body: payload,
+          headers: {
+            'Authorization'=>'Bearer test_bearer_token',
+          }).
+        to_return(status: 200, body: fixture("post_tweets.json"))
     end
 
     its([:data, :id]) { should eq "1445880548472328192" }
