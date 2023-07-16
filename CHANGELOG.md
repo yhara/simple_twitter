@@ -99,6 +99,8 @@ See more.
   - https://github.com/yhara/simple_twitter/pull/10
 - Write YARD comment and publish to Pages
   - https://github.com/yhara/simple_twitter/pull/13
+- Add documentation_uri to gemspec metadata
+  - https://github.com/yhara/simple_twitter/pull/16
 
 ## v1.0.0 (2021-03-28)
 
