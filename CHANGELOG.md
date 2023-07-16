@@ -107,6 +107,7 @@ See more.
 - Tweak doc
   - https://github.com/yhara/simple_twitter/pull/17
   - https://github.com/yhara/simple_twitter/pull/18
+  - https://github.com/yhara/simple_twitter/pull/20
 
 ## v1.0.0 (2021-03-28)
 

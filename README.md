@@ -122,7 +122,7 @@ rescue SimpleTwitter::Error => error
 end
 ```
 
-See more. [`SimpleTwitter::Error`](https://yhara.github.io/simple_twitter/SimpleTwitter/Error.html)
+See more. [SimpleTwitter::Error](https://yhara.github.io/simple_twitter/SimpleTwitter/Error.html)
 
 ## API Reference
 See https://yhara.github.io/simple_twitter/
