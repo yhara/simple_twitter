@@ -25,7 +25,7 @@ require 'simple_twitter'
 
 client = SimpleTwitter::Client.new(bearer_token: "...")
 pp client.get("https://api.twitter.com/2/tweets",
-              ids: "1302127884039909376,1369885448319889409")
+              params: { ids: "1302127884039909376,1369885448319889409" })
 ```
 
 Result:
@@ -55,7 +55,7 @@ client = SimpleTwitter::Client.new(
   access_token_secret: config[:access_token_secret],
 )
 pp client.post("https://api.twitter.com/1.1/statuses/update.json",
-               status: "Test.")
+               params: { status: "Test." })
 ```
 
 You can get the access_token and access_token_secret for your own at the Twitter Developer Portal. For other users, you need to get them via OAuth (out of scope of this gem.)
@@ -77,7 +77,7 @@ end
 Some API parameters has `.` in its name (eg. `tweet.fields`.) Did you know that in Ruby you can include `.` in a hash key if quoted? :-)
 
 ```rb
-tweets = @client.get("https://api.twitter.com/2/users/#{id}/tweets", {
+tweets = @client.get("https://api.twitter.com/2/users/#{id}/tweets", params: {
   expansions: "author_id",
   max_results: 100,
   "tweet.fields": "author_id,created_at,referenced_tweets,text",
