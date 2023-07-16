@@ -1,0 +1,6 @@
+# TypeProf 0.21.3
+
+# Classes
+module SimpleTwitter
+  VERSION: String
+end
