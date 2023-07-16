@@ -55,7 +55,7 @@ module SimpleTwitter
         # @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
         # @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
         def #{m}(url, params: {}, json: nil)
-          res = #{m}_raw(url, params, json)
+          res = #{m}_raw(url, params: params, json: json)
           parse_response(res)
         end
 
