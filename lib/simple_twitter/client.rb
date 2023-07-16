@@ -23,7 +23,7 @@ module SimpleTwitter
       end
     end
 
-    # @!method get(url, params: {}, json: nil)
+    # @!method get(url, params: {}, json: {})
     #   Call Twitter API with GET method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
@@ -32,14 +32,14 @@ module SimpleTwitter
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method get_raw(url, params: {}, json: nil)
+    # @!method get_raw(url, params: {}, json: {})
     #   Call Twitter API with GET method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
     #   @return [HTTP::Response]
 
-    # @!method post(url, params: {}, json: nil)
+    # @!method post(url, params: {}, json: {})
     #   Call Twitter API with POST method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
@@ -48,14 +48,14 @@ module SimpleTwitter
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method post_raw(url, params: {}, json: nil)
+    # @!method post_raw(url, params: {}, json: {})
     #   Call Twitter API with POST method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
     #   @return [HTTP::Response]
 
-    # @!method put(url, params: {}, json: nil)
+    # @!method put(url, params: {}, json: {})
     #   Call Twitter API with PUT method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
@@ -64,14 +64,14 @@ module SimpleTwitter
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method put_raw(url, params: {}, json: nil)
+    # @!method put_raw(url, params: {}, json: {})
     #   Call Twitter API with PUT method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
     #   @return [HTTP::Response]
 
-    # @!method delete(url, params: {}, json: nil)
+    # @!method delete(url, params: {}, json: {})
     #   Call Twitter API with DELETE method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
@@ -80,7 +80,7 @@ module SimpleTwitter
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method delete_raw(url, params: {}, json: nil)
+    # @!method delete_raw(url, params: {}, json: {})
     #   Call Twitter API with DELETE method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
@@ -89,14 +89,14 @@ module SimpleTwitter
 
     %i[get post put delete].each do |m|
       class_eval <<~EOD
-        def #{m}(url, params: {}, json: nil)
+        def #{m}(url, params: {}, json: {})
           res = #{m}_raw(url, params: params, json: json)
           parse_response(res)
         end
 
-        def #{m}_raw(url, params: {}, json: nil)
+        def #{m}_raw(url, params: {}, json: {})
           args = { params: params }
-          args[:json] = json if json
+          args[:json] = json unless json.empty?
           http(:#{m}, url, params).#{m}(url, args)
         end
       EOD

@@ -4,16 +4,16 @@ https://github.com/yhara/simple_twitter/compare/v1.0.0...main
 ### :bomb: [BREAKING CHANGE] positional args to keywords args
 Since v2.0, the positional arguments of the following methods are now keyword arguments.
 
-| v1.0                                                 | v2.0+                                                          |
-| ---------------------------------------------------- | -------------------------------------------------------------- |
-| `SimpleTwitter::Client#get(url, params = {})`        | `SimpleTwitter::Client#get(url, params: {}, json: nil)`        |
-| `SimpleTwitter::Client#get_raw(url, params = {})`    | `SimpleTwitter::Client#get_raw(url, params: {}, json: nil)`    |
-| `SimpleTwitter::Client#post(url, params = {})`       | `SimpleTwitter::Client#post(url, params: {}, json: nil)`       |
-| `SimpleTwitter::Client#post_raw(url, params = {})`   | `SimpleTwitter::Client#post_raw(url, params: {}, json: nil)`   |
-| `SimpleTwitter::Client#put(url, params = {})`        | `SimpleTwitter::Client#put(url, params: {}, json: nil)`        |
-| `SimpleTwitter::Client#put_raw(url, params = {})`    | `SimpleTwitter::Client#put_raw(url, params: {}, json: nil)`    |
-| `SimpleTwitter::Client#delete(url, params = {})`     | `SimpleTwitter::Client#delete(url, params: {}, json: nil)`     |
-| `SimpleTwitter::Client#delete_raw(url, params = {})` | `SimpleTwitter::Client#delete_raw(url, params: {}, json: nil)` |
+| v1.0                                                 | v2.0+                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------- |
+| `SimpleTwitter::Client#get(url, params = {})`        | `SimpleTwitter::Client#get(url, params: {}, json: {})`        |
+| `SimpleTwitter::Client#get_raw(url, params = {})`    | `SimpleTwitter::Client#get_raw(url, params: {}, json: {})`    |
+| `SimpleTwitter::Client#post(url, params = {})`       | `SimpleTwitter::Client#post(url, params: {}, json: {})`       |
+| `SimpleTwitter::Client#post_raw(url, params = {})`   | `SimpleTwitter::Client#post_raw(url, params: {}, json: {})`   |
+| `SimpleTwitter::Client#put(url, params = {})`        | `SimpleTwitter::Client#put(url, params: {}, json: {})`        |
+| `SimpleTwitter::Client#put_raw(url, params = {})`    | `SimpleTwitter::Client#put_raw(url, params: {}, json: {})`    |
+| `SimpleTwitter::Client#delete(url, params = {})`     | `SimpleTwitter::Client#delete(url, params: {}, json: {})`     |
+| `SimpleTwitter::Client#delete_raw(url, params = {})` | `SimpleTwitter::Client#delete_raw(url, params: {}, json: {})` |
 
 Please modify as follows when you upgrade from v1.0 :pray:
 
