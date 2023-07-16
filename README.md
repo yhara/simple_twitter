@@ -2,6 +2,8 @@
 
 Dead simple Twitter API client. Supports both v1 and v2
 
+[![test](https://github.com/yhara/simple_twitter/actions/workflows/test.yml/badge.svg)](https://github.com/yhara/simple_twitter/actions/workflows/test.yml)
+
 ## Installation
 
 Add this line to your application's Gemfile:
