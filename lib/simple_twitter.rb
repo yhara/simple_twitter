@@ -49,17 +49,21 @@ module SimpleTwitter
 
     %i[get post put delete].each do |m|
       class_eval <<~EOD
+        # @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
+        # @param json [Hash] Send this arg as JSON request body with "Content-Type: application/json" header
         # @return [Object] parsed json data
         # @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
         # @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
-        def #{m}(url, params={})
-          res = #{m}_raw(url, params)
+        def #{m}(url, params: {}, json: nil)
+          res = #{m}_raw(url, params, json)
           parse_response(res)
         end
 
         # @return [HTTP::Response]
-        def #{m}_raw(url, params={})
-          http(:#{m}, url, params).#{m}(url, params: params)
+        def #{m}_raw(url, params: {}, json: nil)
+          args = { params: params }
+          args[:json] = json if json
+          http(:#{m}, url, params).#{m}(url, args)
         end
       EOD
     end
