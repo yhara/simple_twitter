@@ -3,8 +3,8 @@ require_relative "lib/simple_twitter/version"
 Gem::Specification.new do |spec|
   spec.name          = "simple_twitter"
   spec.version       = SimpleTwitter::VERSION
-  spec.authors       = ["Yutaka HARA"]
-  spec.email         = ["yutaka.hara+github@gmail.com"]
+  spec.authors       = ["Yutaka HARA", "sue445"]
+  spec.email         = ["yutaka.hara+github@gmail.com", "sue445fukuoka@gmail.com"]
 
   spec.summary       = "Dead simple client for Twitter API v1/v2"
   spec.description   = "Dead simple client for Twitter API (supports both v1 and v2)"
