@@ -1,5 +1,8 @@
 ## Unreleased
-https://github.com/yhara/simple_twitter/compare/v1.0.0...main
+https://github.com/yhara/simple_twitter/compare/v2.0.0...main
+
+## v2.0.0 (2023-07-17)
+https://github.com/yhara/simple_twitter/compare/v1.0.0...v2.0.0
 
 ### :bomb: [BREAKING CHANGE] positional args to keywords args
 Since v2.0, the positional arguments of the following methods are now keyword arguments.
