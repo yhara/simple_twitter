@@ -125,7 +125,7 @@ module SimpleTwitter
     end
 
     # @param res [HTTP::Response]
-    # @return [Object] parsed json data
+    # @return [Hash] parsed json data
     # @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     # @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
     def parse_response(res)
