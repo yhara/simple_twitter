@@ -18,3 +18,13 @@ gems:
   # It's unnecessary if you don't use rbs as a library.
   - name: rbs
     ignore: true
+
+  - name: simple_twitter
+    ignore: true
+  - name: steep
+    ignore: true
+  - name: yard
+    ignore: true
+
+  - name: http
+  - name: simple_oauth
