@@ -46,6 +46,37 @@ RSpec.describe SimpleTwitter::Client do
     its([:data, :text]) { should eq "Are you excited for the weekend?" }
   end
 
+  describe "post with form (API v1.1)" do
+    subject do
+      client.post(
+        "https://upload.twitter.com/1.1/media/upload.json",
+        params: { media_category: "tweet_image" },
+        form: { media: HTTP::FormData::File.new(spec_dir.join("fixtures", "test.png")) },
+      )
+    end
+
+    let(:client) do
+      SimpleTwitter::Client.new(
+        api_key:             "test_api_key",
+        api_secret_key:      "test_api_secret_key",
+        access_token:        "test_access_token",
+        access_token_secret: "test_access_token_secret",
+      )
+    end
+
+    before do
+      stub_request(:post, "https://upload.twitter.com/1.1/media/upload.json?media_category=tweet_image").
+        with(
+          headers: {
+            'Authorization'=>/^OAuth oauth_consumer_key="test_api_key"/,
+            'Content-Type'=>%r{^multipart/form-data; boundary=.+},
+          }).
+        to_return(status: 200, body: fixture("post_media_upload.json"))
+    end
+
+    its([:media_id]) { should eq 710511363345354753 }
+  end
+
   describe "error (API v2)" do
     subject { client.get("https://api.twitter.com/2/users/me") }
 
