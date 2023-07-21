@@ -103,15 +103,29 @@ module SimpleTwitter
         end
 
         def #{m}_raw(url, params: {}, json: {}, form: {})
-          args = { params: params }
-          args[:json] = json unless json.empty?
-          args[:form] = form unless form.empty?
+          args = create_http_args(params: params, json: json, form: form)
           http(:#{m}, url, params).#{m}(url, args)
         end
       EOD
     end
 
     private
+
+    # @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
+    # @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    # @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
+    # @return [Hash<Symbol, Object>]
+    def create_http_args(params:, json:, form:)
+      args = {
+        params: params,
+        headers: {
+          "User-Agent" => "simple_twitter v#{SimpleTwitter::VERSION} (https://github.com/yhara/simple_twitter)",
+        },
+      }
+      args[:json] = json unless json.empty?
+      args[:form] = form unless form.empty?
+      args
+    end
 
     # @param method [Symbol]
     # @param url [String]

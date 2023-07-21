@@ -1,6 +1,8 @@
 require 'http'
 require 'simple_oauth'
 
+require_relative "simple_twitter/version"
+
 module SimpleTwitter
   autoload :Client,      "simple_twitter/client"
   autoload :ClientError, "simple_twitter/client_error"
