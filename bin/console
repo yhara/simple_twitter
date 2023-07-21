@@ -3,6 +3,7 @@
 
 require "bundler/setup"
 require "simple_twitter"
+require "dotenv/load"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
@@ -10,6 +11,14 @@ require "simple_twitter"
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
 # Pry.start
+
+@client = SimpleTwitter::Client.new(
+  bearer_token:        ENV["TWITTER_OAUTH2_BEARER_TOKEN"],
+  api_key:             ENV["TWITTER_OAUTH1_API_KEY"],
+  api_secret_key:      ENV["TWITTER_OAUTH1_API_SECRET_KEY"],
+  access_token:        ENV["TWITTER_OAUTH1_ACCESS_TOKEN"],
+  access_token_secret: ENV["TWITTER_OAUTH1_ACCESS_TOKEN_SECRET"],
+)
 
 require "irb"
 IRB.start(__FILE__)

@@ -1,5 +1,5 @@
 RSpec.describe SimpleTwitter::Client do
-  describe "get with API v2" do
+  describe "get with params (API v2)" do
     subject { client.get("https://api.twitter.com/2/tweets", params: { ids: "1460323737035677698,1519781379172495360,1519781381693353984" }) }
 
     let(:client) { SimpleTwitter::Client.new(bearer_token: "test_bearer_token") }
@@ -22,7 +22,7 @@ RSpec.describe SimpleTwitter::Client do
     end
   end
 
-  describe "post with API v2" do
+  describe "post with json (API v2)" do
     subject { client.post("https://api.twitter.com/2/tweets", json: { text: "Are you excited for the weekend?" }) }
 
     let(:client) { SimpleTwitter::Client.new(bearer_token: "test_bearer_token") }
@@ -37,6 +37,7 @@ RSpec.describe SimpleTwitter::Client do
           body: payload,
           headers: {
             'Authorization'=>'Bearer test_bearer_token',
+            'Content-Type'=>'application/json; charset=UTF-8',
           }).
         to_return(status: 200, body: fixture("post_tweets.json"))
     end
@@ -45,7 +46,38 @@ RSpec.describe SimpleTwitter::Client do
     its([:data, :text]) { should eq "Are you excited for the weekend?" }
   end
 
-  describe "error with API v2" do
+  describe "post with form (API v1.1)" do
+    subject do
+      client.post(
+        "https://upload.twitter.com/1.1/media/upload.json",
+        params: { media_category: "tweet_image" },
+        form: { media: HTTP::FormData::File.new(spec_dir.join("fixtures", "test.png")) },
+      )
+    end
+
+    let(:client) do
+      SimpleTwitter::Client.new(
+        api_key:             "test_api_key",
+        api_secret_key:      "test_api_secret_key",
+        access_token:        "test_access_token",
+        access_token_secret: "test_access_token_secret",
+      )
+    end
+
+    before do
+      stub_request(:post, "https://upload.twitter.com/1.1/media/upload.json?media_category=tweet_image").
+        with(
+          headers: {
+            'Authorization'=>/^OAuth oauth_consumer_key="test_api_key"/,
+            'Content-Type'=>%r{^multipart/form-data; boundary=.+},
+          }).
+        to_return(status: 200, body: fixture("post_media_upload.json"))
+    end
+
+    its([:media_id]) { should eq 710511363345354753 }
+  end
+
+  describe "error (API v2)" do
     subject { client.get("https://api.twitter.com/2/users/me") }
 
     let(:client) { SimpleTwitter::Client.new(bearer_token: "invalid_bearer_token") }

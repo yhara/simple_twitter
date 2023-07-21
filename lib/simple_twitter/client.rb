@@ -23,80 +23,89 @@ module SimpleTwitter
       end
     end
 
-    # @!method get(url, params: {}, json: {})
+    # @!method get(url, params: {}, json: {}, form: {})
     #   Call Twitter API with GET method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [Hash] parsed json data
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method get_raw(url, params: {}, json: {})
+    # @!method get_raw(url, params: {}, json: {}, form: {})
     #   Call Twitter API with GET method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
 
-    # @!method post(url, params: {}, json: {})
+    # @!method post(url, params: {}, json: {}, form: {})
     #   Call Twitter API with POST method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [Hash] parsed json data
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method post_raw(url, params: {}, json: {})
+    # @!method post_raw(url, params: {}, json: {}, form: {})
     #   Call Twitter API with POST method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
 
-    # @!method put(url, params: {}, json: {})
+    # @!method put(url, params: {}, json: {}, form: {})
     #   Call Twitter API with PUT method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [Hash] parsed json data
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method put_raw(url, params: {}, json: {})
+    # @!method put_raw(url, params: {}, json: {}, form: {})
     #   Call Twitter API with PUT method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
 
-    # @!method delete(url, params: {}, json: {})
+    # @!method delete(url, params: {}, json: {}, form: {})
     #   Call Twitter API with DELETE method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [Hash] parsed json data
     #   @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     #   @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
 
-    # @!method delete_raw(url, params: {}, json: {})
+    # @!method delete_raw(url, params: {}, json: {}, form: {})
     #   Call Twitter API with DELETE method
     #   @param url [String]
     #   @param params [Hash] Send this arg as a query string. (e.g. `?name1=value1&name2=value2`)
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
+    #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
 
     %i[get post put delete].each do |m|
       class_eval <<~EOD
-        def #{m}(url, params: {}, json: {})
-          res = #{m}_raw(url, params: params, json: json)
+        def #{m}(url, params: {}, json: {}, form: {})
+          res = #{m}_raw(url, params: params, json: json, form: form)
           parse_response(res)
         end
 
-        def #{m}_raw(url, params: {}, json: {})
+        def #{m}_raw(url, params: {}, json: {}, form: {})
           args = { params: params }
           args[:json] = json unless json.empty?
+          args[:form] = form unless form.empty?
           http(:#{m}, url, params).#{m}(url, args)
         end
       EOD

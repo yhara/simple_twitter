@@ -77,6 +77,48 @@ client = SimpleTwitter::Client.new(bearer_token: ENV["ACCESS_TOKEN"])
 client.post("https://api.twitter.com/2/tweets", json: { text: "Hello twitter!" })
 ```
 
+### Upload media
+If you want to tweet with an image, you need to do the following steps
+
+1. Upload image as media
+    * c.f. https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload
+2. Tweet with media
+    * c.f. https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+
+e.g.
+
+```ruby
+config = (load from yaml or something)
+client = SimpleTwitter::Client.new(
+  api_key: config[:api_key],
+  api_secret_key: config[:api_secret_key],
+  access_token: config[:access_token],
+  access_token_secret: config[:access_token_secret],
+)
+
+# Upload image as media
+media = client.post(
+          "https://upload.twitter.com/1.1/media/upload.json",
+          form: {
+            media: HTTP::FormData::File.new("/path/to/image.png")
+          }
+        )
+# =>
+# {:media_id=>12345678901234567890,
+#  :media_id_string=>"12345678901234567890",
+#  :size=>60628,
+#  :expires_after_secs=>86400,
+#  :image=>{:image_type=>"image/png", :w=>400, :h=>400}}
+
+# Tweet with media
+client.post("https://api.twitter.com/2/tweets",
+            json: { 
+              text: "Test tweet with image", 
+              media: { media_ids: [media[:media_id_string]] },
+            }
+)
+```
+
 ### Advanced
 
 If you want the raw json string or use streaming API, use `get_raw`, `post_raw`, etc. which returns `HTTP::Response` of the [http gem](https://github.com/httprb/http).
