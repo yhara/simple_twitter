@@ -1,11 +1,11 @@
 module SimpleTwitter
   # Twitter API Client
   class Client
-    # @param bearer_token [String] This requires for API v2
-    # @param api_key [String] This requires for API v1.1
-    # @param api_secret_key [String] This requires for API v1.1
-    # @param access_token [String] This requires for API v1.1
-    # @param access_token_secret [String] This requires for API v1.1
+    # @param bearer_token [String] This requires for OAuth 2
+    # @param api_key [String] This requires for OAuth 1.0a
+    # @param api_secret_key [String] This requires for OAuth 1.0a
+    # @param access_token [String] This requires for OAuth 1.0a
+    # @param access_token_secret [String] This requires for OAuth 1.0a
     def initialize(bearer_token: nil,
                    api_key: nil,
                    api_secret_key: nil,
