@@ -1,5 +1,13 @@
 ## Unreleased
-https://github.com/yhara/simple_twitter/compare/v2.0.0...main
+https://github.com/yhara/simple_twitter/compare/v2.1.0...main
+
+## v2.1.0 (2023-07-22)
+https://github.com/yhara/simple_twitter/compare/v2.0.0...v2.1.0
+
+* Support media uploading
+  * https://github.com/yhara/simple_twitter/pull/26
+* Add User-Agent
+  * https://github.com/yhara/simple_twitter/pull/27
 
 ## v2.0.0 (2023-07-17)
 https://github.com/yhara/simple_twitter/compare/v1.0.0...v2.0.0
