@@ -1,4 +1,6 @@
 RSpec.describe SimpleTwitter::Client do
+  let(:user_agent) { "simple_twitter v#{SimpleTwitter::VERSION} (https://github.com/yhara/simple_twitter)" }
+
   describe "get with params (API v2)" do
     subject { client.get("https://api.twitter.com/2/tweets", params: { ids: "1460323737035677698,1519781379172495360,1519781381693353984" }) }
 
@@ -9,6 +11,7 @@ RSpec.describe SimpleTwitter::Client do
         with(
           headers: {
             'Authorization'=>'Bearer test_bearer_token',
+            'User-Agent' => user_agent,
           }).
         to_return(status: 200, body: fixture("get_tweets.json"))
     end
@@ -38,6 +41,7 @@ RSpec.describe SimpleTwitter::Client do
           headers: {
             'Authorization'=>'Bearer test_bearer_token',
             'Content-Type'=>'application/json; charset=UTF-8',
+            'User-Agent' => user_agent,
           }).
         to_return(status: 200, body: fixture("post_tweets.json"))
     end
@@ -70,6 +74,7 @@ RSpec.describe SimpleTwitter::Client do
           headers: {
             'Authorization'=>/^OAuth oauth_consumer_key="test_api_key"/,
             'Content-Type'=>%r{^multipart/form-data; boundary=.+},
+            'User-Agent' => user_agent,
           }).
         to_return(status: 200, body: fixture("post_media_upload.json"))
     end
@@ -87,6 +92,7 @@ RSpec.describe SimpleTwitter::Client do
         with(
           headers: {
             'Authorization'=>'Bearer invalid_bearer_token',
+            'User-Agent' => user_agent,
           }).
         to_return(status: 403, body: fixture("error_403.json"))
     end
@@ -106,6 +112,7 @@ RSpec.describe SimpleTwitter::Client do
         with(
           headers: {
             'Authorization'=>'Bearer invalid_bearer_token',
+            'User-Agent' => user_agent,
           }).
         to_return(status: 500, body: "this is not json")
     end

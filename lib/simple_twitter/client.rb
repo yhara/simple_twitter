@@ -104,6 +104,9 @@ module SimpleTwitter
 
         def #{m}_raw(url, params: {}, json: {}, form: {})
           args = { params: params }
+          args[:headers] = {
+            "User-Agent" => user_agent,
+          }
           args[:json] = json unless json.empty?
           args[:form] = form unless form.empty?
           http(:#{m}, url, params).#{m}(url, args)
@@ -146,6 +149,11 @@ module SimpleTwitter
       end
 
       JSON.parse(res.to_s, symbolize_names: true)
+    end
+
+    # @return [String]
+    def user_agent
+      "simple_twitter v#{SimpleTwitter::VERSION} (https://github.com/yhara/simple_twitter)"
     end
   end
 end
