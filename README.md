@@ -111,11 +111,12 @@ media = client.post(
 #  :image=>{:image_type=>"image/png", :w=>400, :h=>400}}
 
 # Tweet with media
-client.post("https://api.twitter.com/2/tweets",
-            json: { 
-              text: "Test tweet with image", 
-              media: { media_ids: [media[:media_id_string]] },
-            }
+client.post(
+  "https://api.twitter.com/2/tweets",
+  json: { 
+    text: "Test tweet with image", 
+    media: { media_ids: [media[:media_id_string]] },
+  }
 )
 ```
 
