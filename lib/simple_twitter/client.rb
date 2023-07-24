@@ -40,6 +40,7 @@ module SimpleTwitter
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
     #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
+    #   @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
 
     # @!method post(url, params: {}, json: {}, form: {})
     #   Call Twitter API with POST method
@@ -58,6 +59,7 @@ module SimpleTwitter
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
     #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
+    #   @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
 
     # @!method put(url, params: {}, json: {}, form: {})
     #   Call Twitter API with PUT method
@@ -76,6 +78,7 @@ module SimpleTwitter
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
     #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
+    #   @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
 
     # @!method delete(url, params: {}, json: {}, form: {})
     #   Call Twitter API with DELETE method
@@ -94,6 +97,7 @@ module SimpleTwitter
     #   @param json [Hash] Send this arg as JSON request body with `Content-Type: application/json` header
     #   @param form [Hash] Send this arg as form-data request body with `Content-Type: multipart/form-data` header
     #   @return [HTTP::Response]
+    #   @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
 
     %i[get post put delete].each do |m|
       class_eval <<~EOD
@@ -151,6 +155,7 @@ module SimpleTwitter
     # @return [Hash] parsed json data
     # @raise [SimpleTwitter::ClientError] Twitter API returned 4xx error
     # @raise [SimpleTwitter::ServerError] Twitter API returned 5xx error
+    # @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
     def parse_response(res)
       case res.code.to_i / 100
       when 4
