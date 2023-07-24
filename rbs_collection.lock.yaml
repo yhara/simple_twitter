@@ -1,0 +1,26 @@
+---
+sources:
+- type: git
+  name: ruby/gem_rbs_collection
+  revision: aeede7258d020bfd509541e0c8075ce833292409
+  remote: https://github.com/ruby/gem_rbs_collection.git
+  repo_dir: gems
+path: ".gem_rbs_collection"
+gems:
+- name: http
+  version: '5.1'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: aeede7258d020bfd509541e0c8075ce833292409
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: simple_oauth
+  version: '0.3'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: aeede7258d020bfd509541e0c8075ce833292409
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+gemfile_lock_path: Gemfile.lock
