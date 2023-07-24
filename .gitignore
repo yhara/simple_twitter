@@ -8,3 +8,4 @@
 /tmp/
 Gemfile.lock
 .env
+.gem_rbs_collection/

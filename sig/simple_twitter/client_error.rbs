@@ -1,0 +1,7 @@
+# TypeProf 0.21.3
+
+# Classes
+module SimpleTwitter
+  class ClientError < Error
+  end
+end

@@ -1,0 +1,28 @@
+# TypeProf 0.21.3
+
+# Classes
+module SimpleTwitter
+  class Client
+    @bearer_token: string
+    @oauth_params: {consumer_key: string, consumer_secret: string, token: string, token_secret: string}
+
+    def initialize: (?bearer_token: string, ?api_key: string, ?api_secret_key: string, ?access_token: string, ?access_token_secret: string) -> void
+
+    def get:    (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
+    def post:   (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
+    def put:    (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
+    def delete: (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
+
+    def get_raw:    (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> HTTP::Response
+    def post_raw:   (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> HTTP::Response
+    def put_raw:    (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> HTTP::Response
+    def delete_raw: (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> HTTP::Response
+
+    private
+
+    def create_http_args: (params: Hash[Symbol, untyped], json: Hash[Symbol, untyped], form: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
+    def http: (Symbol method, String url, Hash[Symbol, String] params) -> HTTP::Client
+    def auth_header: (Symbol method, String url, Hash[Symbol, String] params) -> String
+    def parse_response: (HTTP::Response res) -> Hash[Symbol, untyped]
+  end
+end
