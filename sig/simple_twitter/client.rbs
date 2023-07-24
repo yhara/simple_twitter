@@ -3,10 +3,10 @@
 # Classes
 module SimpleTwitter
   class Client
-    @bearer_token: string
+    @bearer_token: string?
     @oauth_params: {consumer_key: string, consumer_secret: string, token: string, token_secret: string}
 
-    def initialize: (?bearer_token: string, ?api_key: string, ?api_secret_key: string, ?access_token: string, ?access_token_secret: string) -> void
+    def initialize: (?bearer_token: string?, ?api_key: string?, ?api_secret_key: string?, ?access_token: string?, ?access_token_secret: string?) -> void
 
     def get:    (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
     def post:   (String url, params: Hash[Symbol, untyped], json: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
