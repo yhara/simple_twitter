@@ -1,5 +1,11 @@
 ## Unreleased
-https://github.com/yhara/simple_twitter/compare/v2.1.0...main
+https://github.com/yhara/simple_twitter/compare/v2.2.0...main
+
+## v2.2.0 (2023-07-24)
+https://github.com/yhara/simple_twitter/compare/v2.1.0...v2.2.0
+
+* Add rbs
+  * https://github.com/yhara/simple_twitter/pull/21
 
 ## v2.1.0 (2023-07-22)
 https://github.com/yhara/simple_twitter/compare/v2.0.0...v2.1.0
