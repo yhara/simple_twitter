@@ -3,13 +3,16 @@ module SimpleTwitter
   class Error < StandardError
     # @!attribute [r] raw_response
     # @return [HTTP::Response] raw error response
+    # @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
     attr_reader :raw_response
 
     # @!attribute [r] body
     # @return [Hash<Symbol, String>] error response body
+    # @see https://developer.twitter.com/en/support/twitter-api/error-troubleshooting error response body format
     attr_reader :body
 
     # @param raw_response [HTTP::Response] raw error response from Twitter API
+    # @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
     def initialize(raw_response)
       @raw_response = raw_response
 
