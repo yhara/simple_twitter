@@ -1,5 +1,11 @@
 ## Unreleased
-https://github.com/yhara/simple_twitter/compare/v2.2.0...main
+https://github.com/yhara/simple_twitter/compare/v2.2.1...main
+
+## v2.2.1 (2023-07-25)
+https://github.com/yhara/simple_twitter/compare/v2.2.0...v2.2.1
+
+* Fix rbs for Nillable args
+  * https://github.com/yhara/simple_twitter/pull/30
 
 ## v2.2.0 (2023-07-24)
 https://github.com/yhara/simple_twitter/compare/v2.1.0...v2.2.0
