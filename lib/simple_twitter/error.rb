@@ -8,6 +8,7 @@ module SimpleTwitter
 
     # @!attribute [r] body
     # @return [Hash<Symbol, String>] error response body
+    # @see https://developer.twitter.com/en/support/twitter-api/error-troubleshooting error response body format
     attr_reader :body
 
     # @param raw_response [HTTP::Response] raw error response from Twitter API
