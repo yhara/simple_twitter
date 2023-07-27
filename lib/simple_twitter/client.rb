@@ -2,10 +2,21 @@ module SimpleTwitter
   # Twitter API Client
   class Client
     # @param bearer_token [String] This requires for OAuth 2
-    # @param api_key [String] This requires for OAuth 1.0a
-    # @param api_secret_key [String] This requires for OAuth 1.0a
-    # @param access_token [String] This requires for OAuth 1.0a
-    # @param access_token_secret [String] This requires for OAuth 1.0a
+    # @param api_key [String] API Key (a.k.a Consumer Key). This requires for OAuth 1.0a
+    # @param api_secret_key [String] API Secret Key (a.k.a Consumer Secret). This requires for OAuth 1.0a
+    # @param access_token [String] Access Token. This requires for OAuth 1.0a
+    # @param access_token_secret [String] Access Token Secret. This requires for OAuth 1.0a
+    #
+    # @example Initialize with OAuth 2
+    #   client = SimpleTwitter::Client.new(bearer_token: "bearer_token")
+    #
+    # @example Initialize with OAuth 1.0a
+    #   client = SimpleTwitter::Client.new(
+    #     api_key: "api_key",
+    #     api_secret_key: "api_secret_key",
+    #     access_token: "access_token",
+    #     access_token_secret: "access_token_secret",
+    #   )
     def initialize(bearer_token: nil,
                    api_key: nil,
                    api_secret_key: nil,
