@@ -1,6 +1,6 @@
 # simple_twitter
 
-Dead simple Twitter API client. Supports both v1 and v2
+Dead simple X (formerly Twitter) API client. Supports both v1 and v2
 
 [![Gem Version](https://badge.fury.io/rb/simple_twitter.svg)](https://badge.fury.io/rb/simple_twitter)
 [![test](https://github.com/yhara/simple_twitter/actions/workflows/test.yml/badge.svg)](https://github.com/yhara/simple_twitter/actions/workflows/test.yml)

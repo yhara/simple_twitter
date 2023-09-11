@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Yutaka HARA", "sue445"]
   spec.email         = ["yutaka.hara+github@gmail.com", "sue445fukuoka@gmail.com"]
 
-  spec.summary       = "Dead simple client for Twitter API v1/v2"
-  spec.description   = "Dead simple client for Twitter API (supports both v1 and v2)"
+  spec.summary       = "Dead simple client for X (formerly Twitter) API v1/v2"
+  spec.description   = "Dead simple client for X (formerly Twitter) API (supports both v1 and v2)"
   spec.homepage      = "https://github.com/yhara/simple_twitter"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
