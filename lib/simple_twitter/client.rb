@@ -111,7 +111,7 @@ module SimpleTwitter
     #   @see https://www.rubydoc.info/github/httprb/http/HTTP/Response HTTP::Response documentation
 
     %i[get post put delete].each do |m|
-      class_eval <<~EOD
+      class_eval <<~EOD, __FILE__, __LINE__ + 1
         def #{m}(url, params: {}, json: {}, form: {})
           res = #{m}_raw(url, params: params, json: json, form: form)
           parse_response(res)
