@@ -1,7 +1,7 @@
 ## Unreleased
 https://github.com/yhara/simple_twitter/compare/v2.2.2...main
 
-## v2.2.1 (2023-07-25)
+## v2.2.2 (2023-09-11)
 https://github.com/yhara/simple_twitter/compare/v2.2.1...v2.2.2
 
 * [docs] Tweak yard doc
