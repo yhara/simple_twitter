@@ -40,7 +40,7 @@ RSpec.describe SimpleTwitter::Client do
           body: payload,
           headers: {
             'Authorization'=>'Bearer test_bearer_token',
-            'Content-Type'=>'application/json; charset=UTF-8',
+            'Content-Type'=>%r{^application/json; charset=UTF-8$}i,
             'User-Agent' => user_agent,
           }).
         to_return(status: 200, body: fixture("post_tweets.json"))
