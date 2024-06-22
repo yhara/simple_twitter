@@ -1,18 +1,64 @@
 ---
-sources:
-- type: git
-  name: ruby/gem_rbs_collection
-  revision: aeede7258d020bfd509541e0c8075ce833292409
-  remote: https://github.com/ruby/gem_rbs_collection.git
-  repo_dir: gems
 path: ".gem_rbs_collection"
 gems:
+- name: addressable
+  version: '2.8'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 2c49b34efb3ab42ec5160e1870c23d8349adb157
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: base64
+  version: '0'
+  source:
+    type: stdlib
+- name: bigdecimal
+  version: '0'
+  source:
+    type: stdlib
+- name: delegate
+  version: '0'
+  source:
+    type: stdlib
+- name: diff-lcs
+  version: '1.5'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 2c49b34efb3ab42ec5160e1870c23d8349adb157
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: fileutils
+  version: '0'
+  source:
+    type: stdlib
+- name: forwardable
+  version: '0'
+  source:
+    type: stdlib
+- name: hashdiff
+  version: '1.1'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 2c49b34efb3ab42ec5160e1870c23d8349adb157
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: http
   version: '5.1'
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: aeede7258d020bfd509541e0c8075ce833292409
+    revision: 2c49b34efb3ab42ec5160e1870c23d8349adb157
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: rake
+  version: '13.0'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 2c49b34efb3ab42ec5160e1870c23d8349adb157
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: simple_oauth
@@ -20,7 +66,15 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: aeede7258d020bfd509541e0c8075ce833292409
+    revision: 2c49b34efb3ab42ec5160e1870c23d8349adb157
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: webmock
+  version: '3.19'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 2c49b34efb3ab42ec5160e1870c23d8349adb157
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 gemfile_lock_path: Gemfile.lock
