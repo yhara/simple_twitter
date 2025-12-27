@@ -27,7 +27,6 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "cgi"
   spec.add_dependency "http", ">= 4"
   spec.add_dependency "simple_oauth", ">= 0.3.1"
 
