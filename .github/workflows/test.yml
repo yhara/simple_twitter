@@ -68,3 +68,26 @@ jobs:
       - run: bundle exec rbs collection install
       - run: bundle exec rbs validate
       - run: bundle exec steep check
+
+  yard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+
+      - name: bundle update
+        run: |
+          set -xe
+          bundle config path vendor/bundle
+          bundle update --all --jobs $(nproc) --retry 3
+
+      - name: yard generating test
+        run: |
+          set -xe
+          bundle exec yard
+          ls -ld doc/
