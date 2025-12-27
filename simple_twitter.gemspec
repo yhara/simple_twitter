@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "simple_oauth", ">= 0.3.1"
 
   spec.add_development_dependency "dotenv"
+  spec.add_development_dependency "irb"
   spec.add_development_dependency "rdoc"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rspec-its"
