@@ -30,6 +30,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "http", ">= 4"
   spec.add_dependency "simple_oauth", ">= 0.3.1"
 
+  # FIXME: Remove following after https://github.com/laserlemon/simple_oauth/pull/30 is merged and released
+  spec.add_dependency "cgi"
+
   spec.add_development_dependency "dotenv"
   spec.add_development_dependency "irb"
   spec.add_development_dependency "rdoc"
