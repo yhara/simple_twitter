@@ -31,13 +31,28 @@ jobs:
           - "3.4"
           - "4.0"
 
+        include:
+          # FIXME: Workaround for "ArgumentError: wrong number of arguments (given 4, expected 1)"
+          # c.f. https://github.com/ruby/setup-ruby#rubygems
+          - ruby: "2.5"
+            rubygems: "3.0.0"
+
     steps:
       - uses: actions/checkout@v6.0.1
+
+      # FIXME: Workaround for error in `bundle clean`
+      # /opt/hostedtoolcache/Ruby/2.5.9/x64/bin/bundle clean
+      # Cleaning all the gems on your system is dangerous! If you're sure you want to
+      # remove every system gem not in this bundle, run `bundle clean --force`.
+      - name: export BUNDLE_PATH
+        run: echo "BUNDLE_PATH=vendor/bundle" >> $GITHUB_ENV
+        if: matrix.ruby == '2.5'
 
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+          rubygems: ${{ matrix.rubygems || 'default' }}
 
       - name: bundle update
         run: |
