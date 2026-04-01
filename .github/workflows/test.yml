@@ -12,6 +12,8 @@ on:
 
 jobs:
   test:
+    name: "test (Ruby ${{ matrix.ruby }}, gemfile ${{ matrix.gemfile }})"
+
     runs-on: ubuntu-latest
 
     strategy:
