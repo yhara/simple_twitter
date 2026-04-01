@@ -1,0 +1,3 @@
+module HTTP
+  VERSION: String
+end

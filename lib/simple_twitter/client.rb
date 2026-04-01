@@ -119,7 +119,12 @@ module SimpleTwitter
 
         def #{m}_raw(url, params: {}, json: {}, form: {})
           args = create_http_args(params: params, json: json, form: form)
-          http(:#{m}, url, params).#{m}(url, args)
+
+          if http_v6_or_later?
+            http(:#{m}, url, params).#{m}(url, **args)
+          else
+            http(:#{m}, url, params).#{m}(url, args)
+          end
         end
       EOD
     end
@@ -140,6 +145,11 @@ module SimpleTwitter
       args[:json] = json unless json.empty?
       args[:form] = form unless form.empty?
       args
+    end
+
+    # @return [Boolean]
+    def http_v6_or_later?
+      Gem::Version.new(HTTP::VERSION) >= Gem::Version.new("6.0.0")
     end
 
     # @param method [Symbol]
