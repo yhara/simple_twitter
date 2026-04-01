@@ -1,5 +1,11 @@
 ## Unreleased
-https://github.com/yhara/simple_twitter/compare/v2.2.3...main
+https://github.com/yhara/simple_twitter/compare/v2.3.0...main
+
+## [v2.3.0](https://github.com/yhara/simple_twitter/releases/tag/v2.3.0) (2026-04-01)
+https://github.com/yhara/simple_twitter/compare/v2.2.3...v2.3.0
+
+* Support http gem v6
+  * https://github.com/yhara/simple_twitter/pull/59
 
 ## [v2.2.3](https://github.com/yhara/simple_twitter/releases/tag/v2.2.3) (2025-11-30)
 https://github.com/yhara/simple_twitter/compare/v2.2.2...v2.2.3
