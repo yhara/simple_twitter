@@ -36,6 +36,23 @@ jobs:
           - http_5
           - http_6
 
+        exclude:
+          # http gem v6+ requires Ruby 3.2+
+          - ruby: "2.3"
+            gemfile: http_6
+          - ruby: "2.4"
+            gemfile: http_6
+          - ruby: "2.5"
+            gemfile: http_6
+          - ruby: "2.6"
+            gemfile: http_6
+          - ruby: "2.7"
+            gemfile: http_6
+          - ruby: "3.0"
+            gemfile: http_6
+          - ruby: "3.1"
+            gemfile: http_6
+
         include:
           # FIXME: Workaround for "ArgumentError: wrong number of arguments (given 4, expected 1)"
           # c.f. https://github.com/ruby/setup-ruby#rubygems
