@@ -37,6 +37,12 @@ jobs:
           - http_6
 
         exclude:
+          # http gem v5+ requires Ruby 2.5+
+          - ruby: "2.3"
+            gemfile: http_5
+          - ruby: "2.4"
+            gemfile: http_5
+
           # http gem v6+ requires Ruby 3.2+
           - ruby: "2.3"
             gemfile: http_6
