@@ -22,6 +22,7 @@ module SimpleTwitter
 
     def create_http_args: (params: Hash[Symbol, untyped], json: Hash[Symbol, untyped], form: Hash[Symbol, untyped]) -> Hash[Symbol, untyped]
     def http: (Symbol method, String url, Hash[Symbol, String] params) -> HTTP::Client
+    def http_v6_or_later?: () -> bool
     def auth_header: (Symbol method, String url, Hash[Symbol, String] params) -> String
     def parse_response: (HTTP::Response res) -> Hash[Symbol, untyped]
   end
