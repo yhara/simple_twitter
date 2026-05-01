@@ -71,7 +71,7 @@ jobs:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
 
     steps:
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
       # FIXME: Workaround for error in `bundle clean`
       # /opt/hostedtoolcache/Ruby/2.5.9/x64/bin/bundle clean
@@ -81,7 +81,7 @@ jobs:
         run: echo "BUNDLE_PATH=vendor/bundle" >> $GITHUB_ENV
         if: matrix.ruby == '2.5'
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
@@ -100,9 +100,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
           ruby-version: ruby
           bundler-cache: true
@@ -121,9 +121,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
           ruby-version: ruby
           bundler-cache: true
