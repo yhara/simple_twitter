@@ -17,6 +17,8 @@ workflows:
     '.github/workflows/test.yml':
         - 'actions/checkout@v7.0.1'
         - 'ruby/setup-ruby@v1.335.0'
+    '.github/workflows/verify-actions-lockfile.yml':
+        - 'actions/checkout@v7.0.1'
 dependencies:
     'actions/checkout@v5.0.1':
         ref: 'v5.0.1'
